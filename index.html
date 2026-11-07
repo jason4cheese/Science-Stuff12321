@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Stuff Portal</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --card-bg: #f0f0f0;
+        }
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 5px;
+            cursor: pointer;
+            border: none;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-radius: 5px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Science-Stuff12321</h1>
+
+    <div class="controls">
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <button>by Name</button>
+        <button>by Popularity</button>
+    </div>
+
+    <div class="grid">
+        <!-- You can change the URL below to whatever site or science game you want to launch -->
+        <div class="card" onclick="launchApp('https://example.com')">Chemistry Lab</div>
+        <div class="card" onclick="launchApp('https://example.com')">Physics Sim</div>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        function launchApp(url) {
+            const win = window.open();
+            if (!win || win.closed) {
+                alert('Popup blocked! Please allow popups for this site.');
+                return;
+            }
+            win.document.body.style.margin = '0';
+            win.document.body.style.height = '100vh';
+            
+            const iframe = win.document.createElement('iframe');
+            iframe.style.border = 'none';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.margin = '0';
+            iframe.src = url;
+            
+            win.document.body.appendChild(iframe);
+        }
+    </script>
+</body>
+</html>
