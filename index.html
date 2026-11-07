@@ -47,6 +47,10 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -56,14 +60,19 @@
 
     <div class="controls">
         <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-        <button>by Name</button>
-        <button>by Popularity</button>
     </div>
 
     <div class="grid">
-        <!-- You can change the URL below to whatever site or science game you want to launch -->
-        <div class="card" onclick="launchApp('https://example.com')">Chemistry Lab</div>
-        <div class="card" onclick="launchApp('https://example.com')">Physics Sim</div>
+        <!-- REAL ROBLOX VIA CLOUD SERVICE -->
+        <div class="card" style="border: 2px solid #ff4757;" onclick="launchApp('https://web.cloudmoonapp.com/game/com.roblox.client/')">🔴 Real Roblox (Cloud)</div>
+        
+        <!-- PROXY / CHROMEBOOK FRIENDLY WEB PORTAL -->
+        <div class="card" onclick="launchApp('https://sites.google.com/view/unblock-anywhere/')">Cloud Classroom</div>
+        
+        <!-- LIGHTWEIGHT CLASSIC GAMES -->
+        <div class="card" onclick="launchApp('https://github.io')">Pacman Classic</div>
+        <div class="card" onclick="launchApp('https://github.io')">Snake Retro</div>
+        <div class="card" onclick="launchApp('https://github.io')">Tetris Ultra</div>
     </div>
 
     <script>
@@ -79,7 +88,7 @@
         function launchApp(url) {
             const win = window.open();
             if (!win || win.closed) {
-                alert('Popup blocked! Please allow popups for this site.');
+                alert('Popup blocked! Please check your URL bar and click "Always allow popups" for this website.');
                 return;
             }
             win.document.body.style.margin = '0';
